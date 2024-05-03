@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('./partials/head') %>
+    <title>Blog</title>
+  </head>
+  <body>
+    <%- include('./partials/nav') %>
+    <div class="container h-auto mt-4">
+        <a href="/" class="btn border">Back</a>
+      <h1 style="font-size: 2rem;"><%= blog.title %></h1>
+      <img src="<%= blog.coverImageURL %>" width="700px" />
+      <div>
+          <pre class="mt-3"><%= blog.body %></pre>
+        </div>
+    </div>
+
+    <div class="container mt-4">
+        <div style="display: flex;">
+            <img src="<%= blog.createdBy.profileImageURL %>" width="50px" /> 
+            <h1 style="margin: 10px;"><%= blog.createdBy.fullName %></h1>
+        </div>
+      </div>
+
+      <div class="container mt-3">
+       
+        <% if (locals.user) { %>
+        <div style="box-shadow: 1px 3px 8px #8d8888;padding: 2rem;">
+            <h1 style="font-size: larger;">Add a new comment</h1>
+        <form action="/blog/comment/<%= blog._id %>" method="post">
+          <div class="mb-3 mt-3 ">
+            <div> 
+                <textarea name="content" id=""  class="form-control" placeholder="Enter your comment" cols="30" rows="5"></textarea>
+            </div>
+            <div style="margin: 1rem 0;">
+                <button class="btn btn-primary" style="width: 150px;" type="submit">Add</button>
+            </div>
+          </div>
+        </form>
+    </div>
+    <% } else { %>
+        <div class="alert alert-info" role="alert">
+            If you want to comment, then <a href="/user/signup" class="alert-link">Create Account</a> first..
+          </div>
+    <% } %>
+    <div style="margin-top: 3rem;">
+    <h1>Comments (<%= comments.length %>)</h1>
+        <div class="mt-3">
+          <% comments.forEach(comment => { %>
+          <div style="box-shadow: 1px 3px 8px #8d8888;padding: 1rem;display: flex; margin: 1.5rem 0;">
+            <img src="<%= comment.createdBy.profileImageURL %>" width="50px" />
+            <div style="margin: 0 1rem;">
+                <h1><%= comment.createdBy.fullName %></h1>
+                <p><%= comment.content %></p>
+            </div>
+          </div>
+          <% }) %>
+        </div>
+        </div>
+      </div>
+
+    <%- include('./partials/script') %>
+  </body>
+</html>

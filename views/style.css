@@ -1,0 +1,42 @@
+.hero {
+     min-height: 400px;
+     position: relative;
+     z-index: 10;
+     color: #ffffff;
+     text-align: center;
+     padding-top: 60px;
+ }
+ nav{
+    box-shadow: 0 4px 12px 0 rgba( 0, 0, 0 , 0.07), 0 2px 4px rgba( 0, 0, 0 , 0.05);
+ }
+.container h1{
+     font-weight: bold;
+     color: black;
+}
+
+.display-1 {
+     font-size: 80px;
+     margin-bottom: 15px;
+ }
+ .text-regular {
+     font-weight: normal;
+ }
+ 
+ .text-gray-soft {
+     color: #838E95 !important;
+ }
+.button{
+     color: #fff;
+    background-color: #7952B3;
+}
+.button:hover{
+    color: blueviolet;
+    border: 2px solid blueviolet;
+    background-color: transparent;
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.5;
+}
+li.nav-item{
+    list-style: none;
+}
